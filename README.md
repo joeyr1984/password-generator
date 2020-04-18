@@ -11,4 +11,4 @@ There inputs should be saved and leveraged to create a password comprised of :
  - Special characters  
 
  ## GIF OF WORKING APP
-![password-generator] (./Assets/read-me/password-generator.gif)
+![password-generator](./Assets/read-me/password-generator.gif)
