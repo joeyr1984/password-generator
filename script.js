@@ -1,16 +1,28 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-var passwordLength = prompt("Pick a number between 8-128");
+// User Promts
+var passwordLength = 0;
+do {
+  passwordLength = prompt("Pick a number between 8-128");
+}while(passwordLength < 8 || passwordLength > 128);
 
-var passwordUpper = prompt("Do you want upper case...y or n?")
-if (passwordUpper =="yes")
+var numbers = prompt("Y or N ...Do you want your password to include numbers?")
+if (numbers =="y" || numbers =="Y") {
+  
+  console.log("this is a yes")
+}
+else if (numbers =="n" || numbers =="N"){
 
-var passwordLower = prompt("Do you want lower case...y or n?")
-if (passwordUpper =="yes")
+}
+var passwordUpper = prompt("Y or N ...Do you want upper case")
+//if (passwordUpper =="y")
 
-var specialChar = prompt("Do you want special characters?")
-if (specialChar =="yes")
+var passwordLower = prompt("Y or N ...Do you want lower case")
+//if (passwordLower =="y")
+
+var specialChar = prompt("Y or N ...Do you want special characters?")
+//if (specialChar =="y")
 
 // Write password to the #password input
 function writePassword() {
