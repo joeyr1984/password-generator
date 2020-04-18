@@ -11,4 +11,4 @@ There inputs should be saved and leveraged to create a password comprised of :
  - Special characters  
 
  ## GIF OF WORKING APP
-![GitHub Logo](password-generator homework/password-generator/Assets/password-generator.gif)
+![password-generator](/Users/josephreyes/Documents/homework/password-generator homework/password-generator/password-generator.gif)
