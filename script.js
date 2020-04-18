@@ -1,8 +1,18 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-
+const LOWERCASE_CHAR_CODES = arrayFromLowToHigh(97, 122)
+const UPPERCASE_CHAR_CODES = arrayFromLowToHigh(65, 90)
+const NUMBER_CHAR_CODES = arrayFromLowToHigh(48, 57)
+const SYMBOL_CHAR_CODES = arrayFromLowToHigh(33, 47).concat(
+    arrayFromLowToHigh(58, 64)
+    ).concat(
+        arrayFromLowToHigh(91, 96)
+    ).concat(
+        arrayFromLowToHigh(124, 126)
+    )
+ 
 // User Promts
-function generatePassword() {
+function userPrompts(){
   var passwordLength = 0;
   do {
     passwordLength = prompt("Pick a number between 8-128");
@@ -28,11 +38,37 @@ function generatePassword() {
   do {
     specialChar = prompt("Y or N ...Do you want your password to include specialChar?");
   } while (specialChar != "Y" && specialChar != "N");
-  console.log(passwordLength)
-  console.log(numbers);
-  console.log(passwordUpper);
-  console.log(passwordLower);
-  console.log(specialChar);
+return {
+  passwordLength: passwordLength,
+  numbers: numbers,
+  passwordUpper: passwordUpper,
+  passwordLower: passwordLower,
+  specialChar: specialChar
+   }
+}
+function generatePassword() {
+  var passwordCriteria = userPrompts();
+  console.log(passwordCriteria);
+  var asciiCodes = [];
+  if (passwordCriteria.numbers =="Y"){
+    asciiCodes = asciiCodes.concat(NUMBER_CHAR_CODES);
+  }
+  if (passwordCriteria.passwordUpper =="Y"){
+    asciiCodes = asciiCodes.concat(UPPERCASE_CHAR_CODES);
+  } 
+  if (passwordCriteria.passwordLower =="Y"){
+    asciiCodes = asciiCodes.concat(LOWERCASE_CHAR_CODES);
+  } 
+  if (passwordCriteria.specialChar =="Y"){
+    asciiCodes = asciiCodes.concat(SYMBOL_CHAR_CODES);
+  } 
+  
+  const passwordCharacters = []
+  for (let i = 0; i < passwordCriteria.passwordLength; i++) {
+    const characterCode = asciiCodes[Math.floor(Math.random() * asciiCodes.length)];
+    passwordCharacters.push(String.fromCharCode(characterCode));
+  }
+  return passwordCharacters.join('')
 }
 // Write password to the #password input
 function writePassword() {
@@ -42,6 +78,13 @@ function writePassword() {
 
   passwordText.value = password;
 
+}
+function arrayFromLowToHigh(low, high){
+  const array = []
+  for (let i = low; i <= high; i++){
+  array.push(i)
+}
+return array
 }
 
 // Add event listener to generate button
